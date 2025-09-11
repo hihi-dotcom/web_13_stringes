@@ -51,3 +51,33 @@ console.log(`${timeModify(h)}: ${timeModify(m)}: ${timeModify(sec)}`);
 console.log(s.replace('e', "a"))
 console.log(s.replaceAll("e", "a"));
 console.log(s.indexOf("C")) 
+
+const jellemzok = [
+    "Nagy Mária;164;59",
+    "Kiss Géza;177.57;64.5",
+    "Tóth Bianka;158.3;49",
+    "Kálmán Béla;188.1;79",
+    "Rácz Teréz;174.18;62.5",
+];
+function helykitolto(value){
+    if(value.indexOf('.') >= 0){
+        let tort = value.substring(value.indexOf('.')+1);
+        tort = tort.padEnd(2, '0');
+        value = value.substring(0, value.indexOf('.') + 1) + tort;
+
+        
+    }
+    else{
+        value += ".00";
+    }
+    return value;
+}
+const vagottelemessorok = jellemzok;
+let vagottelemsor = "";
+for(let i = 0; i < vagottelemessorok.length; i++){
+    vagottelemsor = vagottelemessorok[i].split(";");
+    
+    console.log(`Név: ${vagottelemsor[0]}, Magasság: ${helykitolto(vagottelemsor[1])} cm, Súly: ${helykitolto(vagottelemsor[2])} kg `)
+}
+
+
